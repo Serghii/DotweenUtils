@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace DotweenStuff
 {
-    public static class Utils
+    public static class Utility
     {
         public static TweenerCore<Color, Color, ColorOptions> AlphaOut(this Graphic target, float duration, float toAlpha)
         {
@@ -35,8 +37,16 @@ namespace DotweenStuff
             endColor.a = endValue;
         
             target.color = startColor;
-            return  target.DOColor(endColor, duration);
-        }
+            return  DOColor(target, endColor, duration);
 
+            TweenerCore<Color, Color, ColorOptions> DOColor(Graphic target, Color endValue, float duration)
+            {
+                TweenerCore<Color, Color, ColorOptions> t = DOTween.To(() => target.color, x => target.color = x,
+                    endValue, duration);
+                t.SetTarget(target);
+                return t;
+            }
+        }
+        
     }
 }

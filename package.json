@@ -6,7 +6,7 @@
 	"description": "Change Alpha with Dotween for Graphic object",
 	"author": "Sergii Safonov",
 	"dependencies": {
-		"com.dotween_stuff.utility" : "https://github.com/Demigiant/dotween.git"
+				
 	},	
 	"repository": {
 		"type": "git",
